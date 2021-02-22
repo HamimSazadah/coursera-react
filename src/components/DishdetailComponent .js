@@ -32,9 +32,8 @@ class DishDetail extends Component {
     renderComments() {
         return (<ul style={{ listStyleType: 'none' }}>
             {this.state.dish.dish.comments.map(n => {
-                let d = Date(n.date).toString()
                 return (<><li key={n.id}>{n.comment}</li>
-                    <li key={n.id + 'x'}>-- {`${n.author} ,${d}`}</li></>)
+                    <li key={n.id + 'x'}>-- {`${n.author} ,${new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(n.date)))}`}</li></>)
             }
             )
             }
