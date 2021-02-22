@@ -3,6 +3,8 @@ dependencies:
   '@testing-library/react': 11.2.5_react-dom@17.0.1+react@17.0.1
   '@testing-library/user-event': 12.7.1
   bootstrap: 4.0.0
+  bootstrap-social: 5.1.1
+  font-awesome: 4.7.0
   react: 17.0.1
   react-dom: 17.0.1_react@17.0.1
   react-popper: 0.9.2_react-dom@17.0.1+react@17.0.1
@@ -3017,6 +3019,19 @@ packages:
     dev: false
     resolution:
       integrity: sha1-aN/1++YMUes3cl6p4+0xDcwed24=
+  /bootstrap-social/5.1.1:
+    dependencies:
+      bootstrap: 3.4.1
+      font-awesome: 4.7.0
+    dev: false
+    resolution:
+      integrity: sha1-dTDGeK31bPj60/qCwp1NPl0CdQE=
+  /bootstrap/3.4.1:
+    dev: false
+    engines:
+      node: '>=6'
+    resolution:
+      integrity: sha512-yN5oZVmRCwe5aKwzRj6736nSmKDX7pLYwsXiCj/EYmo16hODaBiT4En5btW/jhBF/seV+XMx3aYwukYC3A49DA==
   /bootstrap/4.0.0:
     dev: false
     engines:
@@ -5391,6 +5406,12 @@ packages:
         optional: true
     resolution:
       integrity: sha512-6mPTgLxYm3r6Bkkg0vNM0HTjfGrOEtsfbhagQvbxDEsEkpNhw582upBaoRZylzen6krEmxXJgt9Ju6HiI4O7BA==
+  /font-awesome/4.7.0:
+    dev: false
+    engines:
+      node: '>=0.10.3'
+    resolution:
+      integrity: sha1-j6jPBBGhoxr9B7BtKQK7n8gVoTM=
   /for-in/1.0.2:
     dev: false
     engines:
@@ -12268,6 +12289,8 @@ specifiers:
   '@testing-library/react': ^11.2.5
   '@testing-library/user-event': ^12.7.1
   bootstrap: 4.0.0
+  bootstrap-social: 5.1.1
+  font-awesome: 4.7.0
   react: ^17.0.1
   react-dom: ^17.0.1
   react-popper: 0.9.2
