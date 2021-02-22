@@ -21,27 +21,46 @@ class DishDetail extends Component {
         }
 
     }
+    month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
-    componentDidUpdate(x) {
-        if (this.state.dish != x)
+    componentDidUpdate(prev) {
+        if (this.props != prev)
             this.setState({
-                dish: x
+                dish: this.props
             })
     }
+    renderComments() {
+        return (<ul style={{ listStyleType: 'none' }}>
+            {this.state.dish.dish.comments.map(n => {
+                let d = Date(n.date).toString()
+                return (<><li key={n.id}>{n.comment}</li>
+                    <li key={n.id + 'x'}>-- {`${n.author} ,${d}`}</li></>)
+            }
+            )
+            }
+        </ul >)
+    }
+
     renderDish(dish) {
-        if (dish != null){
-            dish = dish.dish
-            console.log(dish)
+        if (dish != null && dish.dish != null) {
+            let dish2 = dish.dish
             return (
-                <Card>
-                    <CardImg top src={dish.image} alt={dish.name} />
-                    <CardBody>
-                        <CardTitle>{dish.name}</CardTitle>
-                        <CardText>{dish.description}</CardText>
-                    </CardBody>
-                </Card>
+                <div className='row'>
+                    <div className="col-12 col-md-5 m-1">
+                        <Card>
+                            <CardImg top src={dish2.image} alt={dish2.name} />
+                            <CardBody>
+                                <CardTitle>{dish2.name}</CardTitle>
+                                <CardText>{dish2.description}</CardText>
+                            </CardBody>
+                        </Card>
+                    </div>
+                    <div className="col-12 col-md-5 m-1">
+                        {this.renderComments(this.state.dish)}
+                    </div>
+                </div>
             );
-            }else
+        } else
             return (
                 <div></div>
             );
@@ -49,10 +68,8 @@ class DishDetail extends Component {
 
     render() {
         return (
-            <div className="container">
-                <div className="row">
-                   {this.renderDish(this.state.dish)}
-                </div>
+            <div className="col-md-12 col-sm-6 m-1">
+                {this.renderDish(this.state.dish)}
             </div>
         );
     }
