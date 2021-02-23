@@ -1,9 +1,10 @@
 import React from 'react';
 import {
     Card, CardImg, CardText, CardBody,
-    CardTitle, Breadcrumb, BreadcrumbItem
+    CardTitle, Breadcrumb, BreadcrumbItem, Button, Modal, ModalHeader, ModalBody, Col, Row, Label, FormGroup
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { Control, LocalForm, Errors } from 'react-redux-form';
 
 
 function RenderComments(dish) {
@@ -14,6 +15,7 @@ function RenderComments(dish) {
                     <li key={n.id + 'x'}>-- {`${n.author} ,${new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(n.date)))}`}</li></>)
             })
             }
+            <CommentForm />
         </ul >)
     }
 
@@ -37,6 +39,75 @@ function RenderDish(dish) {
             </div>
         </div>
     );
+}
+
+function CommentForm() {
+    const [modal, setModal] = React.useState(false);
+    const required = (val) => val && val.length;
+    const maxLength = (len) => (val) => !(val) || (val.length <= len);
+    const minLength = (len) => (val) => val && (val.length >= len);
+    const isNumber = (val) => !isNaN(Number(val));
+    const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
+    function toggle() {
+        setModal(!modal)
+    }
+
+    function handleSubmit(values) {
+        console.log('Current State is: ' + JSON.stringify(values));
+        alert('Current State is: ' + JSON.stringify(values));
+    }
+    return (
+        <>
+            <Button onClick={toggle} color="secondary">Submit Comment</Button>
+            <Modal isOpen={modal} toggle={toggle} >
+                <ModalHeader toggle={toggle}>Submit Comment</ModalHeader>
+                <ModalBody>
+                    <LocalForm onSubmit={(values) => handleSubmit(values)}>
+                        <FormGroup>
+                            <Label htmlFor="rating">Rating</Label>
+                            <Control.select model=".rating" id="rating" name="rating"
+                                className="form-control">
+                                {[1, 2, 3, 4, 5].map(n => <option>{n}</option>)}
+                            </Control.select>
+
+                        </FormGroup>
+                        <FormGroup>
+                            <Label htmlFor="name">Your Name</Label>
+                            <Control.text model=".name" id="name" name="name"
+                                placeholder="Your Name"
+                                className="form-control"
+                                validators={{
+                                    required, minLength: minLength(3), maxLength: maxLength(15)
+                                }}
+                            />
+                            <Errors
+                                className="text-danger"
+                                model=".name"
+                                show="touched"
+                                messages={{
+                                    required: 'Required ',
+                                    minLength: 'Must be greater than 2 characters',
+                                    maxLength: 'Must be 15 characters or less'
+                                }}
+                            />
+                        </FormGroup>
+                        <FormGroup>
+                            <Label htmlFor="comment" >Comment</Label>
+                            <Control.textarea model=".comment" id="comment" name="comment"
+                                placeholder=""
+                                className="form-control"
+                            />
+                        </FormGroup>
+                        <FormGroup>
+                            <Button type="submit" color="primary">
+                                Submit
+                            </Button>
+                        </FormGroup>
+                    </LocalForm>
+                </ModalBody>
+            </Modal>
+        </>
+    )
 }
 
 const DishDetail = (props) => {
