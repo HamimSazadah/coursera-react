@@ -1,0 +1,23 @@
+dependencies:
+  cross-fetch: 2.1.0
+lockfileVersion: 5.2
+packages:
+  /cross-fetch/2.1.0:
+    dependencies:
+      node-fetch: 2.1.1
+      whatwg-fetch: 2.0.3
+    dev: false
+    resolution:
+      integrity: sha512-FTIt2WK44RiafWQ62xIvd+oBoVd392abh1lF872trLlA74JCR1s4oTHlixwoIKy44ehn8WbQ0Ds2P16sw7ZQxg==
+  /node-fetch/2.1.1:
+    dev: false
+    engines:
+      node: 4.x || >=6.0.0
+    resolution:
+      integrity: sha1-NpynC4L1DIZJYQSmx3bSdPTkotQ=
+  /whatwg-fetch/2.0.3:
+    dev: false
+    resolution:
+      integrity: sha1-nITsLc9oGH/wC8ZOEnS0QhduHIQ=
+specifiers:
+  cross-fetch: 2.1.0
