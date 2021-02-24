@@ -6,11 +6,10 @@ import {
 import { Link } from 'react-router-dom';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Loading } from './LoadingComponent';
+import { baseUrl } from '../shared/baseUrl';
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => val && (val.length >= len);
-const isNumber = (val) => !isNaN(Number(val));
-const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
 
 
 function RenderComments({ comments, addComment, dishId }) {
@@ -55,7 +54,7 @@ function RenderDish(props) {
         return (
             <>
                 <Card>
-                    <CardImg top src={dish2.image} alt={dish2.name} />
+                    <CardImg top src={baseUrl + dish2.image} alt={dish2.name} />
                     <CardBody>
                         <CardTitle>{dish2.name}</CardTitle>
                         <CardText>{dish2.description}</CardText>
