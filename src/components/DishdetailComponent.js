@@ -48,7 +48,6 @@ function RenderDish(props) {
 }
 
 class CommentForm extends React.Component {
-    // props.addComment(this.props.dishId, values.rating, values.author, values.comment);
     constructor(props) {
         super(props);
 
@@ -56,16 +55,18 @@ class CommentForm extends React.Component {
             modal: false
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        
     }
 
-
+    
     toggle(x) {
         this.setState({ ...this.state, modal: !x })
     }
 
     handleSubmit(values) {
-        console.log('Current State is: ' + JSON.stringify(values));
-        alert('Current State is: ' + JSON.stringify(values));
+        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
+        // console.log('Current State is: ' + JSON.stringify(values));
+        // alert('Current State is: ' + JSON.stringify(values));
     }
     render() {
         return (
@@ -84,8 +85,8 @@ class CommentForm extends React.Component {
 
                             </FormGroup>
                             <FormGroup>
-                                <Label htmlFor="name">Your Name</Label>
-                                <Control.text model=".name" id="name" name="name"
+                                <Label htmlFor="author">Your Name</Label>
+                                <Control.text model=".author" id="author" name="author"
                                     placeholder="Your Name"
                                     className="form-control"
                                     validators={{
@@ -94,7 +95,7 @@ class CommentForm extends React.Component {
                                 />
                                 <Errors
                                     className="text-danger"
-                                    model=".name"
+                                    model=".author"
                                     show="touched"
                                     messages={{
                                         required: 'Required ',
@@ -142,7 +143,10 @@ const DishDetail = (props) => {
                     <RenderDish dish={props.dish} />
                 </div>
                 <div className="col-12 col-md-5 m-1">
-                    <RenderComments comments={props.comments} />
+                <RenderComments comments={props.comments}
+        addComment={props.addComment}
+        dishId={props.dish.id}
+      />
                 </div>
             </div>
         </div>
