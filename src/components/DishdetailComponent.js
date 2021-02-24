@@ -12,16 +12,16 @@ const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => val && (val.length >= len);
 
 
-function RenderComments({ comments, addComment, dishId }) {
+function RenderComments({comments, postComment, dishId}) {
     if (typeof comments != 'undefined') {
-        console.log(comments, addComment, dishId);
+        // console.log(comments, addComment, dishId);
         return (<ul style={{ listStyleType: 'none' }}>
             {comments.map(n => {
                 return (<><li key={n.id}>{n.comment}</li>
                     <li key={n.id + 'x'}>-- {`${n.author} ,${new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(n.date)))}`}</li></>)
             })
             }
-            <CommentForm dishId={dishId} addComment={addComment} />
+            <CommentForm dishId={dishId} postComment={postComment} />
         </ul >)
     } else {
         return (<></>)
@@ -85,7 +85,8 @@ class CommentForm extends React.Component {
     }
 
     handleSubmit(values) {
-        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
+        // this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
+        this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
         // console.log('Current State is: ' + JSON.stringify(values));
         // alert('Current State is: ' + JSON.stringify(values));
     }
@@ -165,7 +166,7 @@ const DishDetail = (props) => {
                 </div>
                 <div className="col-12 col-md-5 m-1">
                     <RenderComments comments={props.comments}
-                        addComment={props.addComment}
+                        postComment={props.postComment}
                         dishId={props.dish.id}
                     />
                 </div>
