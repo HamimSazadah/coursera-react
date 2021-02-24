@@ -1,12 +1,12 @@
 import React from 'react';
 import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media, CardImg, CardImgOverlay, CardTitle } from 'reactstrap';
 import { Link } from 'react-router-dom';
-
+import { baseUrl } from '../shared/baseUrl';
 
 function RenderLeader(props) {
     return (
         <Media>
-            <Media left><Media object src={props.leader.image} /></Media>
+            <Media left><Media object src={baseUrl + props.leader.image} /></Media>
             <Media body style={{padding:'0px 30px 10px'}}>
                 <Media heading>{props.leader.name}</Media>
                 <h5>{props.leader.designation}</h5>
