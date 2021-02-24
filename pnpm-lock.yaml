@@ -13,6 +13,7 @@ dependencies:
   react-redux-form: 1.16.8_efb285bb23fa14981affd276dfa19b28
   react-router-dom: 4.2.2_react@17.0.1
   react-scripts: 4.0.2_react@17.0.1
+  react-transition-group: 2.3.0_react-dom@17.0.1+react@17.0.1
   reactstrap: 5.0.0_react-dom@17.0.1+react@17.0.1
   redux: 3.7.2
   redux-logger: 3.0.6
@@ -1247,6 +1248,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-BogPQ7ciE6SYAUPtlm9tWbgI9+2AgqSam6QivMgXgAT+fKbgppaj4ZX15MHeLC1PVF5sNk70huBu20XxWOs8Cg==
+  /@babel/runtime/7.13.6:
+    dependencies:
+      regenerator-runtime: 0.13.7
+    dev: false
+    resolution:
+      integrity: sha512-Y/DEVhSQ91u27rxq7D0EH/sewS6+x06p/MgO1VppbDHMzYXLZrAR5cFjCom78e9RUw1BQAq6qJg6fXc/ep7glA==
   /@babel/template/7.12.13:
     dependencies:
       '@babel/code-frame': 7.12.13
@@ -3418,6 +3425,10 @@ packages:
     dev: false
     resolution:
       integrity: sha1-G2gcIf+EAzyCZUMJBolCDRhxUdw=
+  /chain-function/1.0.1:
+    dev: false
+    resolution:
+      integrity: sha512-SxltgMwL9uCko5/ZCLiyG2B7R9fY4pDZUw7hJ4MhirdjBLosoDqkWABi3XMucddHdLiFJMb7PD2MZifZriuMTg==
   /chalk/2.4.2:
     dependencies:
       ansi-styles: 3.2.1
@@ -4535,7 +4546,7 @@ packages:
       integrity: sha512-gd3ypIPfOMr9h5jIKq8E3sHOTCjeirnl0WK5ZdS1AW0Odt0b1PaWaHdJ4Qk4klv+YB9aJBS7mESXjFoDQPu6DA==
   /dom-helpers/3.4.0:
     dependencies:
-      '@babel/runtime': 7.12.18
+      '@babel/runtime': 7.13.6
     dev: false
     resolution:
       integrity: sha512-LnuPJ+dwqKDIyotW1VzmOZ5TONUN7CwkCR5hrgawTUbkBGYdeoNLZo6nNfGkCrjtE1nXXaj7iMMpDa8/d9WoIA==
@@ -10328,6 +10339,21 @@ packages:
         optional: true
     resolution:
       integrity: sha512-okaWNaGDGtnXyM2CLMUl8gYZnAubgxEulC40FYjsxn5bbj+G/mDINdy24wHz4Vypb/LWtIe8rdBU78k/74v8Mw==
+  /react-transition-group/2.3.0_react-dom@17.0.1+react@17.0.1:
+    dependencies:
+      chain-function: 1.0.1
+      dom-helpers: 3.4.0
+      loose-envify: 1.4.0
+      prop-types: 15.7.2
+      react: 17.0.1
+      react-dom: 17.0.1_react@17.0.1
+      warning: 3.0.0
+    dev: false
+    peerDependencies:
+      react: '>=15.0.0'
+      react-dom: '>=15.0.0'
+    resolution:
+      integrity: sha512-OU3/swEL8y233u5ajTn3FIcQQ/b3XWjLXB6e2LnM1OK5JATtsyfJvPTZ8c/dawHNqjUltcdHRSpgMtPe7v07pw==
   /react-transition-group/2.9.0_react-dom@17.0.1+react@17.0.1:
     dependencies:
       dom-helpers: 3.4.0
@@ -13064,6 +13090,7 @@ specifiers:
   react-redux-form: 1.16.8
   react-router-dom: 4.2.2
   react-scripts: 4.0.2
+  react-transition-group: 2.3.0
   reactstrap: 5.0.0
   redux: 3.7.2
   redux-logger: 3.0.6
