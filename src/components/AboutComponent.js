@@ -1,13 +1,15 @@
 import React from 'react';
 import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media, CardImg, CardImgOverlay, CardTitle } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 function RenderLeader(props) {
     return (
         <Media>
             <Media left><Media object src={baseUrl + props.leader.image} /></Media>
-            <Media body style={{padding:'0px 30px 10px'}}>
+            <Media body style={{ padding: '0px 30px 10px' }}>
                 <Media heading>{props.leader.name}</Media>
                 <h5>{props.leader.designation}</h5>
                 {props.leader.description}
@@ -18,11 +20,38 @@ function RenderLeader(props) {
 
 
 function About(props) {
-
-    const leaders = props.leaders.map((leader) => {
-        return (
-            <RenderLeader leader={leader} />
-        );
+    console.log(props)
+    const leaders = props.leaders.leaders.map((leader) => {
+        if (props.leaders.isLoading) {
+            return (
+                <div className="container">
+                    <div className="row">
+                        <Loading />
+                    </div>
+                </div>
+            );
+        }
+        else if (props.leaders.errMess) {
+            return (
+                <div className="container">
+                    <div className="row">
+                        <div className="col-12">
+                            <h4>{props.leaders.errMess}</h4>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+        else
+            return (
+                <FadeTransform
+                    in
+                    transformProps={{
+                        exitTransform: 'scale(0.5) translateY(-50%)'
+                    }}>
+                    <RenderLeader leader={leader} />
+                </FadeTransform>
+            );
     });
 
     return (
